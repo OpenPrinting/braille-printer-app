@@ -58,7 +58,7 @@ int dyn_ensure(DYN_STRING *ds,int free_space) // {{{
 }
 // }}}
 
-inline int dyn_vprintf(DYN_STRING *ds,const char *fmt,va_list ap) // {{{
+int dyn_vprintf(DYN_STRING *ds,const char *fmt,va_list ap) // {{{
 {
   assert(ds);
 

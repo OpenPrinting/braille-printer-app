@@ -775,13 +775,13 @@ err2:
 }
 
 /* for memory debug */
-void *operator new(size_t size)
+void *operator new(size_t size) throw (std::bad_alloc)
 {
     void *p = malloc(size);
     return p;
 }
 
-void operator delete(void *p)
+void operator delete(void *p) throw ()
 {
     free(p);
 }

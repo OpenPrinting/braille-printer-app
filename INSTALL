@@ -35,11 +35,10 @@ BEFORE YOU BEGIN
 COMPILING THE BZR REPOSITORY CODE
 
     The CUPS Filters BZR repository doesn't hold a copy of the pre-built
-    configure script.  You'll need to run the GNU autoconf software (2.60 or
+    configure script.  You'll need to run the GNU autoconf software (2.65 or
     higher) to create it:
 
-        aclocal
-	autoconf
+        ./autogen.sh
 
 
 CONFIGURATION

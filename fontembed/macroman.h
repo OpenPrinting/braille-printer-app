@@ -28,5 +28,5 @@ static const char *macRoman[]=
    "onesuperior","twosuperior","threesuperior","onehalf","onequarter", "threequarters","franc","Gbreve","gbreve","Idotaccent",
    "Scedilla","scedilla","Cacute","cacute","Ccaron", "ccaron","dcroat"};
 #else
-static const char *macRoman[]={};
+static const char *macRoman[]={0};
 #endif

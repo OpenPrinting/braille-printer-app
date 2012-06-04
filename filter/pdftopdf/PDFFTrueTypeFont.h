@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef _PDFFTRUTYPEFONT_H_
 #define _PDFFTRUTYPEFONT_H_
 
+#include <config.h>
 #include <endian.h>
 #include "UGooString.h"
 #ifdef PDFTOPDF
