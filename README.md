@@ -70,7 +70,7 @@ printer drivers and especially the filters needed for driverless
 printing (currently PWG Raster, Apple Raster, PCLm, and PDF output
 formats, for printers supporting IPP Everywhere, AirPrint, Wi-Fi
 Direct, and other standards). See
-http://www.openprinting.org/driver/ for a more comprehensive set
+http://www.openprinting.org/drivers/ for a more comprehensive set
 of printer drivers for Linux.
 
 See
@@ -81,7 +81,7 @@ for information about the PDF-based printing workflow.
 
 Report bugs to
 
-    https://github.com/OpenPrinting/cups-filter/issues
+    https://github.com/OpenPrinting/cups-filters/issues
 
 See the "COPYING", "LICENCE", and "NOTICE" files for legal
 information. The license is the same as for CUPS, for a maximum of
@@ -1018,12 +1018,12 @@ look at test.sh for example.
 
 #### Further Info
 
-Font embedding is handled by libfontembed in the cupsfilter/fontembed
+Font embedding is handled by libfontembed in the cupsfilters/fontembed
 subdirectory.
 
 Please report all bugs to
 
-https://github.com/OpenPrinting/cups-filter/issues
+https://github.com/OpenPrinting/cups-filters/issues
 
 
 ### PDFTORASTER
