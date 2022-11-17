@@ -196,24 +196,24 @@ AC_SUBST(TABLESDIR)
 # =====================
 AC_CONFIG_FILES([
 	Makefile
-	filter/braille/drivers/index/indexv4.sh
-	filter/braille/drivers/index/indexv3.sh
-	filter/braille/drivers/index/index.sh
-	filter/braille/drivers/index/textbrftoindexv3
-	filter/braille/drivers/index/imageubrltoindexv3
-	filter/braille/drivers/index/imageubrltoindexv4
-	filter/braille/drivers/generic/brftoembosser
-	filter/braille/filters/cups-braille.sh
-	filter/braille/filters/imagetobrf
-	filter/braille/filters/texttobrf
-	filter/braille/filters/brftopagedbrf
-	filter/braille/filters/vectortopdf
-	filter/braille/filters/vectortobrf
-	filter/braille/filters/musicxmltobrf
-	filter/braille/filters/liblouis1.defs.gen
+	driver/index/indexv4.sh
+	driver/index/indexv3.sh
+	driver/index/index.sh
+	driver/index/textbrftoindexv3
+	driver/index/imageubrltoindexv3
+	driver/index/imageubrltoindexv4
+	driver/generic/brftoembosser
+	filter/cups-braille.sh
+	filter/imagetobrf
+	filter/texttobrf
+	filter/brftopagedbrf
+	filter/vectortopdf
+	filter/vectortobrf
+	filter/musicxmltobrf
+	filter/liblouis1.defs.gen
 ])
 AC_CONFIG_COMMANDS([executable-scripts], [
-	chmod +x filter/braille/filters/liblouis1.defs.gen
+	chmod +x filter/liblouis1.defs.gen
 ])
 AC_OUTPUT
 

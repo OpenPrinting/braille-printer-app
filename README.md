@@ -70,7 +70,7 @@ printer drivers and especially the filters needed for driverless
 printing (currently PWG Raster, Apple Raster, PCLm, and PDF output
 formats, for printers supporting IPP Everywhere, AirPrint, Wi-Fi
 Direct, and other standards). See
-http://www.openprinting.org/drivers/ for a more comprehensive set
+http://www.openprinting.org/driver/ for a more comprehensive set
 of printer drivers for Linux.
 
 See
@@ -81,7 +81,7 @@ for information about the PDF-based printing workflow.
 
 Report bugs to
 
-    https://github.com/OpenPrinting/cups-filters/issues
+    https://github.com/OpenPrinting/cups-filter/issues
 
 See the "COPYING", "LICENCE", and "NOTICE" files for legal
 information. The license is the same as for CUPS, for a maximum of
@@ -1018,12 +1018,12 @@ look at test.sh for example.
 
 #### Further Info
 
-Font embedding is handled by libfontembed in the cupsfilters/fontembed
+Font embedding is handled by libfontembed in the cupsfilter/fontembed
 subdirectory.
 
 Please report all bugs to
 
-https://github.com/OpenPrinting/cups-filters/issues
+https://github.com/OpenPrinting/cups-filter/issues
 
 
 ### PDFTORASTER
@@ -1618,9 +1618,9 @@ subdirectory of the home directory.
 
 #### Remark about the source code
 
-The file filter/braille/drivers/index/ubrlto4dot.c is used to generate
+The file driver/index/ubrlto4dot.c is used to generate
 the translation table in
-filter/braille/drivers/index/imageubrltoindexv[34]. It is included as
+driver/index/imageubrltoindexv[34]. It is included as
 "source code" for these two files, even if actually running the
 generation in the Makefile is more tedious than really useful.
 

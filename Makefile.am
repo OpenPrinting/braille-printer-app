@@ -15,8 +15,8 @@ EXTRA_DIST = \
 	$(doc_DATA) \
 	autogen.sh \
 	config.rpath \
-	filter/braille/drivers/index/ubrlto4dot.c \
-	filter/braille/filters/TODO.txt
+	driver/index/ubrlto4dot.c \
+	filter/TODO.txt
 
 # =========
 # utilities
@@ -71,24 +71,24 @@ pkgppdcdir = $(CUPS_DATADIR)/ppdc
 pkgppdc_DATA =
 
 GENERATED_LIBLOUIS = \
-	filter/braille/filters/liblouis3.defs \
-	filter/braille/filters/liblouis4.defs
+	filter/liblouis3.defs \
+	filter/liblouis4.defs
 GENERATED_DEFS = \
-	filter/braille/filters/liblouis1.defs \
-	filter/braille/filters/liblouis2.defs \
+	filter/liblouis1.defs \
+	filter/liblouis2.defs \
 	$(GENERATED_LIBLOUIS)
 
-filter/braille/filters/liblouis1.defs: filter/braille/filters/liblouis1.defs.gen
+filter/liblouis1.defs: filter/liblouis1.defs.gen
 	$< > $@
 
-filter/braille/filters/liblouis2.defs: filter/braille/filters/liblouis1.defs
+filter/liblouis2.defs: filter/liblouis1.defs
 	sed -e "s/Braille transcription/Additional Braille transcription (2)/" \
 	    -e "s/^  \\*Choice /  Choice /" \
 	    -e "s/^  Choice \"HyphLocale\//  *Choice \"HyphLocale\//" \
 	    -e s/LibLouis/LibLouis2/ \
 	    < $< > $@
 
-$(GENERATED_LIBLOUIS): filter/braille/filters/liblouis%.defs: filter/braille/filters/liblouis1.defs
+$(GENERATED_LIBLOUIS): filter/liblouis%.defs: filter/liblouis1.defs
 	sed -e "s/Braille transcription/Additional Braille transcription ($*)/" \
 	    -e "s/^  \\*Choice /  Choice /" \
 	    -e "s/^  Choice \"None\//  *Choice \"None\//" \
@@ -96,12 +96,12 @@ $(GENERATED_LIBLOUIS): filter/braille/filters/liblouis%.defs: filter/braille/fil
 	    < $< > $@
 
 brlppdcfiles = \
-	filter/braille/drivers/common/media-braille.defs \
-	filter/braille/drivers/index/index.defs \
-	filter/braille/filters/braille.defs \
-	filter/braille/filters/imagemagick.defs \
-	filter/braille/filters/liblouis.defs \
-	filter/braille/drivers/common/fr-braille.po
+	driver/common/media-braille.defs \
+	driver/index/index.defs \
+	filter/braille.defs \
+	filter/imagemagick.defs \
+	filter/liblouis.defs \
+	driver/common/fr-braille.po
 
 if ENABLE_BRAILLE
 pkgppdc_DATA += $(brlppdcfiles)
@@ -110,7 +110,7 @@ nodist_pkgppdc_DATA = \
 endif
 
 EXTRA_DIST += \
-	filter/braille/filters/liblouis1.defs.gen.in \
+	filter/liblouis1.defs.gen.in \
 	$(brlppdcfiles)
 
 # =====
@@ -136,10 +136,10 @@ EXTRA_DIST += \
 if ENABLE_BRAILLE
 pkgbrailledir = $(CUPS_DATADIR)/braille
 nodist_pkgbraille_SCRIPTS = \
-	filter/braille/drivers/index/indexv4.sh \
-	filter/braille/drivers/index/indexv3.sh \
-	filter/braille/drivers/index/index.sh \
-	filter/braille/filters/cups-braille.sh
+	driver/index/indexv4.sh \
+	driver/index/indexv3.sh \
+	driver/index/index.sh \
+	filter/cups-braille.sh
 endif
 
 # ======================
@@ -149,16 +149,16 @@ genfilterscripts =
 pkgfilter_SCRIPTS = $(genfilterscripts)
 if ENABLE_BRAILLE
 nodist_pkgfilter_SCRIPTS = \
-	filter/braille/drivers/generic/brftoembosser \
-	filter/braille/drivers/index/imageubrltoindexv3 \
-	filter/braille/drivers/index/imageubrltoindexv4 \
-	filter/braille/drivers/index/textbrftoindexv3 \
-	filter/braille/filters/imagetobrf \
-	filter/braille/filters/vectortopdf \
-	filter/braille/filters/vectortobrf \
-	filter/braille/filters/texttobrf \
-	filter/braille/filters/brftopagedbrf \
-	filter/braille/filters/musicxmltobrf
+	driver/generic/brftoembosser \
+	driver/index/imageubrltoindexv3 \
+	driver/index/imageubrltoindexv4 \
+	driver/index/textbrftoindexv3 \
+	filter/imagetobrf \
+	filter/vectortopdf \
+	filter/vectortobrf \
+	filter/texttobrf \
+	filter/brftopagedbrf \
+	filter/musicxmltobrf
 endif
 
 distclean-local:
