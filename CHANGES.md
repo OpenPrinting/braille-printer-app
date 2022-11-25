@@ -2,6 +2,9 @@
 
 ## CHANGES IN V2.0b1 (TBA)
 
+- configure.ac: Added "foreign" to to AM_INIT_AUTOMAKE() call. Makes
+  automake not require a file named README.
+
 - textbrftoindex: Fix control character filtering (Pull request #409)
 
 - Build system: Remove `-D_PPD_DEPRECATED=""` from the compiling
