@@ -5,7 +5,7 @@ doc_DATA = \
 	AUTHORS \
 	COPYING \
 	CHANGES.md \
-	CHANGES-1.x.md \
+	CHANGES-cups-filter.md \
 	INSTALL \
 	README.md \
 	DEVELOPING.md \
@@ -198,4 +198,4 @@ if ENABLE_BRAILLE
 	$(RM) $(DESTDIR)$(pkgfilterdir)/textbrftoindexv4
 endif
 
-SUBDIRS =
+SUBDIRS = braille-printer-app

@@ -1,7 +1,7 @@
-# OpenPrinting Braille Printer Application v2.0b1 - 2020-11-18
+# OpenPrinting Braille Printer Application v1.0b1 - 2020-11-18
 
 Looking for compile instructions? Read the file "INSTALL"
-instead...
+instead..
 
 ## INTRODUCTION
 
