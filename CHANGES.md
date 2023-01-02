@@ -1,6 +1,6 @@
-# CHANGES - OpenPrinting Braille Printer Application v2.0b1 - 2022-11-18
+# CHANGES - OpenPrinting Braille Printer Application v1.0b1 - 2022-11-18
 
-## CHANGES IN V2.0b1 (TBA)
+## CHANGES IN V1.0b1 (TBA)
 
 - configure.ac: Added "foreign" to to AM_INIT_AUTOMAKE() call. Makes
   automake not require a file named README.
