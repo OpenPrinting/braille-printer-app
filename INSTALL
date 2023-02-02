@@ -9,8 +9,9 @@ complete change log can be found in "CHANGES.md".
 
 BEFORE YOU BEGIN
 
-    You'll need ANSI-compliant C compiler, plus a make program and
-    POSIX-compliant shell (/bin/sh).  The GNU compiler tools and Bash work well
+    You'll need ANSI-compliant C compiler, a make program, POSIX-compliant
+    shell (/bin/sh) and programs needed for "autogen.sh" script - autoconf,
+    automake, autopoint and libtool. The GNU compiler tools and Bash work well
     and we have tested the current CUPS code against several versions of GCC
     with excellent results.
 
@@ -101,9 +102,25 @@ PACKAGING THE SOFTWARE FOR OPERATING SYSTEM DISTRIBUTIONS
     people. So it is highly recommended for desktop distributions and
     generally distributions with a CUPS printing stack.
 
-    In addition to the package itself cups-filters 2.x, liblouis,
-    ImageMagick, and poppler-utils need to be installed. Recommended
-    is to also have liblouisutdml, antiword, docx2txt for more
-    sophisticated Braille generation representing also the formatting
-    of the input text. None of these is needed for compiling
-    braille-printer-app.
+    In addition to the package itself several other packages can be
+    required based on packager's decision which file formats the Braille
+    printer application should support. The binaries, the formats they support
+    and possible package name are:
+
+    - lou_translate - for musicxml files and backup Braille translations,
+      from liblouis package,
+    - convert - for raster images, from ImageMagick,
+    - pdftotext - for PDFs, from poppler-utils,
+    - file2brl - for text files and best Braille translations,
+      from liblouisutdml,
+    - inkscape - for vector images, from inkscape,
+    - lynx - for html files, from lynx,
+    - antiword - for MS Word doc files, from antiword,
+    - cups-filters 2.x - for possible input file's conversion into
+      formats which Braille filters accept,
+    - docx2txt - for MS Word docx files,
+    - unzip - for OpenOffice/Libreoffice file conversions, from unzip,
+    - rtf2txt - for translating RTF files, from rtf2txt,
+    - FreeDots - for better translation of musicxml files, from FreeDots
+
+    None of these is needed for compiling braille-printer-app.

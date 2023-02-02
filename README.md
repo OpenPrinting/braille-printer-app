@@ -17,14 +17,7 @@ Braille embosser support, currently only as a classic CUPS printer
 driver package. A conversion to a Printer Application is in the works
 and will get committed here soon.
 
-For compiling and using this package CUPS (2.2.2 or newer),
-libcupsfilters 2.x, and libppd are needed.
-
-You will also need at least cups-filters 2.x, liblouis, ImageMagick,
-and poppler-utils. Recommended is to also have liblouisutdml,
-antiword, docx2txt for more sophisticated Braille generation
-representing also the formatting of the input text. None of these is
-needed for compiling braille-printer-app.
+For compiling and using this package see INSTALL file.
 
 Report bugs to
 
