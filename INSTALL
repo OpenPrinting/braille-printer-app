@@ -9,7 +9,7 @@ complete change log can be found in "CHANGES.md".
 
 BEFORE YOU BEGIN
 
-    You'll need ANSI-compliant C and C++ compilers, plus a make program and
+    You'll need ANSI-compliant C compiler, plus a make program and
     POSIX-compliant shell (/bin/sh).  The GNU compiler tools and Bash work well
     and we have tested the current CUPS code against several versions of GCC
     with excellent results.
@@ -19,8 +19,8 @@ BEFORE YOU BEGIN
     Compaq, HP, SGI, and Sun.  BSD users should use GNU make (gmake) since BSD
     make does not support "include".
 
-    CUPS (2.2.2 or newer), libcupsfilters 2.x, and libppd must be
-    installed to be able to compile this package.
+    CUPS (2.2.2 or newer) development files must be installed to be able to compile
+    this package.
 
 COMPILING THE GIT REPOSITORY CODE
 
