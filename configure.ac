@@ -19,6 +19,7 @@ m4_include([m4/ax_compare_version.m4])
 m4_include([m4/basic-directories.m4])
 AM_INIT_AUTOMAKE([1.11 gnu dist-xz dist-bzip2 subdir-objects foreign])
 AM_SILENT_RULES([yes])
+AC_LANG([C])
 AC_CONFIG_HEADERS([config.h])
 # Extra defines for the config.h
 AH_BOTTOM([
@@ -49,8 +50,6 @@ AH_BOTTOM([
 # Find required base packages
 # ===========================
 AC_PROG_CC
-AC_PROG_CXX
-AX_CXX_COMPILE_STDCXX([11],[noext],[mandatory])
 AM_PROG_CC_C_O
 AM_ICONV
 AC_PROG_INSTALL
