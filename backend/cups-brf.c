@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <pwd.h>
+#include <grp.h>
 
 
 int
@@ -33,7 +34,7 @@ main(int argc,
   int ret;
   int fd;
 
-  if (setuid(0))
+  if (getuid() != 0)
   {
     // We need to be root to be able to turn into another user.
     fprintf(stderr,"ERROR: cups-brf must be called as root\n");
@@ -78,9 +79,22 @@ main(int argc,
     fprintf(stderr, "ERROR: turning gid into %u\n", pw->pw_gid);
     return (CUPS_BACKEND_FAILED);
   }
+  if (setgroups(1, &pw->pw_gid) < 0)
+  {
+    fprintf(stderr, "ERROR: failed setting supplementary group\n");
+    return (CUPS_BACKEND_FAILED);
+  }
   if (setuid(pw->pw_uid))
   {
     fprintf(stderr, "ERROR: turning uid into %u\n", pw->pw_uid);
+    return (CUPS_BACKEND_FAILED);
+  }
+  // If we didn't send the file as root, we should be switched to
+  // regular user now and can't switch back to root.
+  // If we can, end with error.
+  if (pw->pw_uid != 0 && setuid(0) != -1)
+  {
+    fprintf(stderr, "ERROR: switching to user %s failed\n", user);
     return (CUPS_BACKEND_FAILED);
   }
 
