@@ -16,7 +16,7 @@ application/sgml	application/vnd.cups-brf	10	texttobrf
 application/vnd.cups-brf	application/vnd.cups-paged-brf	0	brftopagedbrf
 application/vnd.cups-ubrl	application/vnd.cups-paged-ubrl	0	brftopagedbrf
 
-application/vnd.recordare.musicxml+xml application/vnd.cups-brf	30	musicxmltobrf
+@MUSICXML_CONV@
 
 application/vnd.oasis.opendocument.chart			application/vnd.cups-brf	30	texttobrf
 application/vnd.oasis.opendocument.formula			application/vnd.cups-brf	30	texttobrf

@@ -188,6 +188,21 @@ PKG_CHECK_EXISTS([liblouis], [
 AM_CONDITIONAL(ENABLE_BRAILLE, test "x$enable_braille" = xyes)
 AC_SUBST(TABLESDIR)
 
+# ================
+# musicxml support
+# ================
+AC_ARG_ENABLE(musicxml, AS_HELP_STRING([--enable-musicxml],[enable musicxml file support, requires Freedots and lou_translate]),
+	      enable_musicxml=$enableval,enable_musicxml=no)
+if test "x$enable_musicxml" = "xyes"
+then
+	  MUSICXML_CONV="application/vnd.recordare.musicxml+xml application/vnd.cups-brf 30  musicxmltobrf"
+	  MUSICXML_TYPE="application/vnd.recordare.musicxml+xml xml contains(0,1000,\"<score-partwise\")"
+	  MUSICXML_FILTER="filter/musicxmltobrf"
+fi
+AM_CONDITIONAL(ENABLE_MUSICXML, test "x$enable_musicxml" = "xyes")
+AC_SUBST(MUSICXML_CONV)
+AC_SUBST(MUSICXML_TYPE)
+
 # =====================
 # Prepare all .in files
 # =====================
@@ -206,8 +221,10 @@ AC_CONFIG_FILES([
 	filter/brftopagedbrf
 	filter/vectortopdf
 	filter/vectortobrf
-	filter/musicxmltobrf
+	${MUSICXML_FILTER}
 	filter/liblouis1.defs.gen
+	mime/braille.convs
+	mime/braille.types
 ])
 AC_CONFIG_COMMANDS([executable-scripts], [
 	chmod +x filter/liblouis1.defs.gen
@@ -227,6 +244,7 @@ Build configuration:
 	cups-config:     ${with_cups_config}
 	braille:	 ${enable_braille}
 	braille tables:  ${TABLESDIR}
+	musicxml support:  ${enable_musicxml}
 	werror:          ${enable_werror}
 ==============================================================================
 ])
