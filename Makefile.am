@@ -147,6 +147,10 @@ endif
 # ======================
 genfilterscripts =
 pkgfilter_SCRIPTS = $(genfilterscripts)
+if ENABLE_MUSICXML
+musicxmlscripts = filter/musicxmltobrf
+endif
+
 if ENABLE_BRAILLE
 nodist_pkgfilter_SCRIPTS = \
 	driver/generic/brftoembosser \
@@ -158,7 +162,7 @@ nodist_pkgfilter_SCRIPTS = \
 	filter/vectortobrf \
 	filter/texttobrf \
 	filter/brftopagedbrf \
-	filter/musicxmltobrf
+	$(musicxmlscripts)
 endif
 
 distclean-local:

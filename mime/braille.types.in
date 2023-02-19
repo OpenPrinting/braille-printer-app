@@ -16,7 +16,7 @@ application/vnd.cups-paged-ubrl
 
 application/sgml	sgml
 
-application/vnd.recordare.musicxml+xml xml contains(0,1000,"<score-partwise")
+@MUSICXML_TYPE@
 
 application/vnd.oasis.opendocument.chart					odc
 application/vnd.oasis.opendocument.database					odb
