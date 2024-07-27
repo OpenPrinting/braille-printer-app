@@ -5,7 +5,7 @@ AC_PREREQ([2.65])
 # ====================
 # Version informations
 # ====================
-AC_INIT([braille-printer-app], [2.0b1], [https://github.com/OpenPrinting/braille-printer-app/issues], [braille-printer-app], [https://github.com/OpenPrinting/braille-printer-app/])
+AC_INIT([braille-printer-app], [1.0b1], [https://github.com/OpenPrinting/braille-printer-app/issues], [braille-printer-app], [https://github.com/OpenPrinting/braille-printer-app/])
 braille_printer_app_version="AC_PACKAGE_VERSION"
 braille_printer_app_version_major="`echo AC_PACKAGE_VERSION | awk -F. '{print $1}'`"
 braille_printer_app_version_major="`echo AC_PACKAGE_VERSION | awk -F. '{printf("%d\n",$2);}'`"
