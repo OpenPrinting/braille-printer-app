@@ -202,4 +202,4 @@ if ENABLE_BRAILLE
 	$(RM) $(DESTDIR)$(pkgfilterdir)/textbrftoindexv4
 endif
 
-SUBDIRS =
+SUBDIRS = braille-printer-app
