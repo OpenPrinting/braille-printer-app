@@ -20,8 +20,13 @@ BEFORE YOU BEGIN
     Compaq, HP, SGI, and Sun.  BSD users should use GNU make (gmake) since BSD
     make does not support "include".
 
-    CUPS (2.2.2 or newer) development files must be installed to be able to compile
-    this package.
+    The following development files must be installed to be able to compile
+    this package:
+
+    - [PAPPL](https://www.msweet.org/pappl) 1.1 or later.
+    - [CUPS](https://openprinting.github.io/cups) 2.2.2 or later (for libcups).
+    - [CUPS-FILTER](https://github.com/OpenPrinting/cups-filters) 2.0 or later.
+    - [LIBMAGIC](https://www.darwinsys.com/file/)
 
 COMPILING THE GIT REPOSITORY CODE
 

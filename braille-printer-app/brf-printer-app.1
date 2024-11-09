@@ -1,0 +1,205 @@
+
+.TH brf-printer-app 1 "brf-printer-app" "2024-07-20" "arun"
+.SH NAME
+brf-printer-app \- braille printer application
+.SH SYNOPSIS
+.B brf-printer-app
+[
+.I SUB-COMMAND
+] [ OPTIONS ] [ FILES ]
+.SH DESCRIPTION
+.B brf-printer-app
+is a printer application that can be run standalone or as a dedicated IPP Everywhere network service.
+.B brf-printer-app
+supports printing brf, ubrl , pdf and printer-specific files to USB and network printers.
+If no sub-command is specified, "submit" is assumed.
+.SH SUB-COMMANDS
+The following sub-commands are recognized by
+.B brf-printer-app:
+.TP 5
+.B add
+Add a printer queue.
+.TP 5
+.B cancel
+Cancel one or more print jobs.
+.TP 5
+.B default
+Get/Set the default printer queue.
+.TP 5
+.B delete
+Delete a printer queue.
+.TP 5
+.B devices
+List connected printers.
+.TP 5
+.B drivers
+List the supported drivers.
+.TP 5
+.B jobs
+List pending print jobs.
+.TP 5
+.B modify
+Modify a printer queue.
+.TP 5
+.B options
+List supported options.
+.TP 5
+.B printers
+List the printer queues.
+.TP 5
+.B server
+Start a server.
+.TP 5
+.B shutdown
+Shutdown a running server.
+.TP 5
+.B status
+Show the status of a printer or all printers.
+.TP 5
+.B submit
+Submit a file for printing.
+.SH OPTIONS
+The following options are recognized by
+.B brf-printer-app:
+.TP 5
+.B \-a
+Cancels all jobs ("cancel" sub-command).
+.TP 5
+\fB\-d \fIPRINTER\fR
+Specifies the printer.
+.TP 5
+\fB\-h \fIHOST\fR
+Specifies the server hostname.
+.TP 5
+\fB\-j \fIJOB-ID\fR
+Specifies the job ID ("cancel" sub-command).
+.TP 5
+\fB\-m \fIDRIVER-NAME\fR
+Specifies the driver name ("add" sub-command).
+.B brf-printer-app
+supports the "generic braille embosser" driver.
+.TP 5
+\fB\-n \fICOPIES\fR
+Specifies the number of copies.
+.TP 5
+\fB\-o media=\fISIZE-NAME\fR
+Specifies the paper size.
+.B brf-printer-app
+supports custom PWG "self-describing" media size names of the form "custom_name_WIDTHxLENGTHin" (size in inches) and "custom_name_WIDTHxLENGTHmm" (size in millimeters) as well as the following standard sizes: "na_ledger_11x17in", "na_legal_8.5x14in", "na_letter_8.5x11in", "na_executive_7x10in", "iso_a3_297x420mm" "iso_a4_210x297mm", "iso_a5_148x210mm", "jis_b5_182x257mm", "iso_b5_176x250mm", "na_number-10_4.125x9.5in", "iso_c5_162x229mm", "iso_dl_110x220mm", "na_monarch_3.875x7.5in".
+.TP 5
+\fB\-o media-source=\fITRAY-NAME\fR
+Specifies the paper tray.
+.B brf-printer-app
+supports the following trays: "default" (default/auto tray), "manual" (manual feed), "envelope", "tray-1", "tray-2", "tray-3", or "tray-4", depending on the printer.
+.TP 5
+\fB\-o media-type=\fITYPE-NAME\fR
+Specifies the paper type.
+.B brf-printer-app
+supports the following types: "stationery" (plain paper), "stationery-inkjet" (inkjet paper), "stationery-letterhead" (letterhead paper), "envelope", "transparency", and "photographic" (photo paper of different kinds), depending on the printer.
+.TP 5
+.B \-o orientation-requested=portrait
+Print images in portrait orientation.
+.TP 5
+.B \-o orientation-requested=landscape
+Print images in landscape (90 degrees counter-clockwise) orientation.
+.TP 5
+.B \-o orientation-requested=reverse-portrait
+Print images in reverse-portrait (upside down) orientation.
+.TP 5
+.B \-o orientation-requested=reverse-landscape
+Print images in reverse-landscape (90 degrees clockwise) orientation.
+.TP 5
+.B \-o orientation-requested=none
+Print images in automatic (portrait or landscape) orientation.
+
+.TP 5
+\fB\-o print-quality=draft\fR
+Print using draft quality.
+.TP 5
+\fB\-o print-quality=normal\fR
+Print using normal quality.
+.TP 5
+\fB\-o print-quality=high\fR
+Print using high/best quality.
+.TP 5
+\fB\-o printer-geo-location=geo:\fI=LATLON\fR
+Specifies the geographic location of the printer as a "geo:" URI ("add" and "modify" sub-commands).
+.TP 5
+\fB\-o printer-location\fI=LOCATION\fR
+Specifies the human-readable location, for example "Rack 42" ("add" and "modify" sub-commands).
+.TP 5
+\fB\-o printer-organization\fI=ORGANIZATION\fR
+Specifies the organization name, for example "Acme, Inc." ("add" and "modify" sub-commands).
+.TP 5
+\fB\-o printer-organizational-unit\fI=UNIT\fR
+Specifies the organizational unit, for example "Accounting Department" ("add" and "modify" sub-commands).
+.TP 5
+\fB\-o sides=one-sided\fR
+Print on one side only.
+.TP 5
+\fB\-o sides=two-sided-long-edge\fR
+Print on both sides for portrait output.
+.TP 5
+\fB\-o sides=two-sided-short-edge\fR
+Print on both sides for landscape output.
+.TP 5
+\fB\-t \fITITLE\fR
+Specifies the job title ("submit" sub-command).
+.TP 5
+\fB\-u \fIURI\fR
+Specifies an "ipp:" or "ipps:" printer/server.
+.TP 5
+\fB\-v \fIDEVICE-URI\fR
+Specifies a "socket:" or "usb:" device ("add" sub-command).
+.SH EXAMPLES
+Add a Braille printer "Braille" at IP address 11.22.33.44:
+
+.nf
+brf-printer-app add -v socket://11.22.33.44 -m b brf_gen -d Braille
+.fi
+
+Print a brf file to the printer:
+
+.nf
+brf-printer-app -d  filbraillename.brf
+.fi
+
+Print a photo to US Letter media:
+
+.nf
+brf-printer-app -d B -o braille media=na_letter_8.5x11in -o print-quality=high photo.jpg
+.fi
+
+List supported options:
+
+.nf
+brf-printer-app options
+.fi
+
+List queued jobs:
+
+.nf
+brf-printer-app jobs
+.fi
+
+List configured printers:
+
+.nf
+brf-printer-app printers
+.fi
+
+Show status of server:
+
+.nf
+brf-printer-app status
+.fi
+
+List network and USB printers that can be added:
+
+.nf
+brf-printer-app devices
+.fi
+
+
+.SH COPYRIGHT
+Copyright \[co] 2019-2024 by Michael R Sweet, 2022 by Chandresh Soni, 2024 by Arun Patwa.
