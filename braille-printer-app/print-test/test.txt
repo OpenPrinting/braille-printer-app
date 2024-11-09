@@ -1,0 +1,25 @@
+I was debugging.
+I tried 
+case1:
+data->vendor[data->num_vendor++] = "TopMargin";
+ippAddInteger(*attrs, IPP_TAG_PRINTER, IPP_TAG_INTEGER,"TopMargin", 3);
+and 
+case2:
+data->vendor[data->num_vendor++] = "TopMargin";
+ippAddInteger(*attrs, IPP_TAG_PRINTER, IPP_TAG_INTEGER,"TopMargin-default", 3);
+
+
+when I checked the logs, it was not showing the value anywhere which is getting set to 3. Its always showing TopMargin default value as 2.
+
+But if I will pass -o TopMargin=3 or TopMargin-default=3 then it is able to take Selected TopMargin value 3
+ 
+  
+
+application/xhtml	application/vnd.cups-brf
+
+application/xml		application/vnd.cups-brf	10	texttobrf
+
+application/sgml	application/vnd.cups-brf	10	texttobrf
+
+text/rtf		application/vnd.cups-brf	30	texttobrf
+application/rtf		application/vnd.cups-brf	30	texttobrf

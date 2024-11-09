@@ -1,0 +1,10 @@
+[Unit]
+Description=braille Printer Application
+
+[Service]
+ExecStart=brf-printer-app server
+ExecStop=brf-printer-app shutdown
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

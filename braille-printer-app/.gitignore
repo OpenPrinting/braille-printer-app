@@ -1,0 +1,10 @@
+# Ignore specific object files
+brf-printer-app.o
+generic-brf.o
+brf-printer-app
+
+# Ignore test files and build folders
+test_files/
+build/
+.vscode/
+
