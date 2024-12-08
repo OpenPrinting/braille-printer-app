@@ -54,6 +54,8 @@ filter/vectortobrf
 filter/vectortopdf
 filter/foomatic-rip/foomatic-rip.1
 mime/cupsfilters.convs
+mime/braille.convs
+mime/braille.types
 utils/cups-browsed
 utils/cups-browsed.conf
 cups-notifier.c
