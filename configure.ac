@@ -100,6 +100,12 @@ CUPS_SERVERBIN="`$CUPSCONFIG --serverbin`"
 AC_DEFINE_UNQUOTED(CUPS_SERVERBIN, "$CUPS_SERVERBIN", [Path to CUPS binaries dir])
 AC_SUBST(CUPS_SERVERBIN)
 
+PKG_CHECK_MODULES([LIBCUPSFILTERS], [libcupsfilters])
+if ! $PKG_CONFIG --atleast-version 2.0 libcupsfilters ; then
+	AC_MSG_ERROR([libcupsfilters needs to be at least version 2.0])
+fi
+PKG_CHECK_MODULES([PAPPL], [pappl])
+
 # ======================
 # Check system functions
 # ======================
@@ -188,6 +194,10 @@ PKG_CHECK_EXISTS([liblouis], [
 AM_CONDITIONAL(ENABLE_BRAILLE, test "x$enable_braille" = xyes)
 AC_SUBST(TABLESDIR)
 
+PKG_CHECK_MODULES([LIBLOUISUTDML], [liblouisutdml], [
+	AC_DEFINE([HAVE_LIBLOUISUTDML], [1], [Define to 1 if you have the liblouisutdml library.])
+])
+
 # ================
 # musicxml support
 # ================
@@ -202,6 +212,23 @@ fi
 AM_CONDITIONAL(ENABLE_MUSICXML, test "x$enable_musicxml" = "xyes")
 AC_SUBST(MUSICXML_CONV)
 AC_SUBST(MUSICXML_TYPE)
+
+# ====================
+# Supports for filters
+# ====================
+#
+PKG_CHECK_MODULES([LIBMAGIC], [libmagic])
+
+# ===================
+# Systemd integration
+# ===================
+AC_ARG_WITH([systemdsystemunitdir],
+        AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files]),
+        [], [with_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)])
+if test "x$with_systemdsystemunitdir" != xno; then
+        AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])
+fi
+AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
 
 # =====================
 # Prepare all .in files

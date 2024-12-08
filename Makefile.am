@@ -1,5 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4
 
+AM_DISTCHECK_CONFIGURE_FLAGS = --without-systemdsystemunitdir
+
 doc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
@@ -17,6 +19,42 @@ EXTRA_DIST = \
 	config.rpath \
 	driver/index/ubrlto4dot.c \
 	filter/TODO.txt
+
+# ===========
+# application
+# ===========
+
+bin_PROGRAMS = brf-printer-app
+
+brf_printer_app_SOURCES = \
+	braille-printer-app/brf-printer-app.c \
+	braille-printer-app/brf-converts.c \
+	braille-printer-app/generic-brf.c
+
+brf_printer_app_CFLAGS = \
+	$(CUPS_CFLAGS) \
+	$(LIBCUPSFILTERS_CFLAGS) \
+	$(PAPPL_CFLAGS) \
+	$(LIBLOUISUTDML_CFLAGS) \
+	$(LIBMAGIC_CFLAGS)
+
+brf_printer_app_LDFLAGS = \
+	$(CUPS_LIBS) \
+	$(LIBCUPSFILTERS_LIBS) \
+	$(PAPPL_LIBS) \
+	$(LIBLOUISUTDML_LIBS) \
+	$(LIBMAGIC_LIBS)
+
+noinst_HEADERS = \
+	braille-printer-app/brf-printer.h
+
+dist_man1_MANS = \
+	braille-printer-app/brf-printer-app.1
+
+if HAVE_SYSTEMD
+dist_systemdsystemunit_DATA = \
+	braille-printer-app/brf-printer-app.service
+endif
 
 # =========
 # utilities
