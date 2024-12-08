@@ -5,7 +5,7 @@ doc_DATA = \
 	AUTHORS \
 	COPYING \
 	CHANGES.md \
-	CHANGES-1.x.md \
+	CHANGES-cups-filters.md \
 	INSTALL \
 	README.md \
 	DEVELOPING.md \
