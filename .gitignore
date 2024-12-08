@@ -8,6 +8,7 @@
 *~
 *.pc
 *.tar.*
+*.swp
 core
 core.*
 aclocal.m4
