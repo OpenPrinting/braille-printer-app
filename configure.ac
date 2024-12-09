@@ -74,31 +74,34 @@ AS_IF([test "x$with_cups_config" != "xsystem"], [
 	CUPSCONFIG=$with_cups_config
 ], [
 	AC_PATH_TOOL(CUPSCONFIG, [cups-config])
-	AS_IF([test -z "$CUPSCONFIG"], [
-		AC_MSG_ERROR([Required cups-config is missing. Please install CUPS developer packages.])
-	])
 ])
-CUPS_CFLAGS=`$CUPSCONFIG --cflags`
-CUPS_LIBS=`$CUPSCONFIG --image --libs`
-CUPS_VERSION=`$CUPSCONFIG --version`
-AC_SUBST(CUPS_CFLAGS)
-AC_SUBST(CUPS_LIBS)
 
-CUPS_DATADIR="`$CUPSCONFIG --datadir`"
-AC_DEFINE_UNQUOTED(CUPS_DATADIR, "$CUPS_DATADIR", [CUPS datadir])
-AC_SUBST(CUPS_DATADIR)
+AS_IF([test -z "$CUPSCONFIG" -o "$CUPSCONFIG" = no ], [
+	if ! $PKG_CONFIG --atleast-version 2.5 cups ; then
+		AC_MSG_ERROR([Missing cups-config or cups >= 2.5])
+	fi
 
-CUPS_SERVERROOT="`$CUPSCONFIG --serverroot`"
-AC_DEFINE_UNQUOTED(CUPS_SERVERROOT, "$CUPS_SERVERROOT", [CUPS serverroot])
-AC_SUBST(CUPS_SERVERROOT)
+	CUPS_CFLAGS=`$PKG_CONFIG --cflags cups`
+	CUPS_LIBS=`$PKG_CONFIG --libs cups`
+	CUPS_VERSION=`$PKG_CONFIG --modversion cups`
 
-CUPS_FONTPATH="$CUPS_DATADIR/fonts"
-AC_DEFINE_UNQUOTED(CUPS_FONTPATH, "$CUPS_FONTPATH", [Path to CUPS fonts dir])
-AC_SUBST(CUPS_FONTPATH)
+	CUPS_DATADIR=`$PKG_CONFIG --variable=cups_datadir cups`
+	CUPS_SERVERBIN=`$PKG_CONFIG --variable=cups_serverbin cups`
+], [
+	CUPS_CFLAGS=`$CUPSCONFIG --cflags`
+	CUPS_LIBS=`$CUPSCONFIG --image --libs`
+	CUPS_VERSION=`$CUPSCONFIG --version`
+	AC_SUBST(CUPS_CFLAGS)
+	AC_SUBST(CUPS_LIBS)
 
-CUPS_SERVERBIN="`$CUPSCONFIG --serverbin`"
-AC_DEFINE_UNQUOTED(CUPS_SERVERBIN, "$CUPS_SERVERBIN", [Path to CUPS binaries dir])
-AC_SUBST(CUPS_SERVERBIN)
+	CUPS_DATADIR="`$CUPSCONFIG --datadir`"
+	AC_DEFINE_UNQUOTED(CUPS_DATADIR, "$CUPS_DATADIR", [CUPS datadir])
+	AC_SUBST(CUPS_DATADIR)
+
+	CUPS_SERVERBIN="`$CUPSCONFIG --serverbin`"
+	AC_DEFINE_UNQUOTED(CUPS_SERVERBIN, "$CUPS_SERVERBIN", [Path to CUPS binaries dir])
+	AC_SUBST(CUPS_SERVERBIN)
+])
 
 PKG_CHECK_MODULES([LIBCUPSFILTERS], [libcupsfilters])
 if ! $PKG_CONFIG --atleast-version 2.0 libcupsfilters ; then
